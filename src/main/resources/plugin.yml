@@ -1,0 +1,52 @@
+name: TimeistsDekos
+version: 1.15.2
+description: A decorative plugin.
+authors: [Gadse, Timiette]
+depend: [Vault, DiscordSRV]
+
+main: com.timeist.TimeistsDecos
+api-version: 1.14
+
+commands:
+  nick:
+    description: 'Nickname command'
+    aliases: [nickname]
+  prefix:
+    aliases: [pfx, cpfx]
+    description: 'Prefix command'
+    # All permissions should be the same for a plugin.
+    # consider decos.<command> to make permissions consistent
+    permission: cpfx.pfx
+    permission-message: "§cYou're missing the following permission: §6<permission>"
+  emote:
+    aliases: [em, emoticon, emoji]
+    description: 'Emoticons that go before and after prefix.'
+    permission: cpfx.pfx
+    permission-message: "§cYou're missing the following permission: §6<permission>"
+  webhook:
+    aliases: [whook, discordhook, discordwebhook, dhook, discordurl, webhookurl, setwebhook, sethook]
+    description: 'Sets the webhook that this plugin uses to communicate with Discord server. Only runnable by console.'
+  arrow:
+    aliases: [arr, chatmarker, marker, msgprefix]
+    description: 'Changes the color of the > before your chat message.'
+    permission: cpfx.arrow
+    permission-message: "§cYou're missing the following permission: §6<permission>"
+  quote:
+    description: 'Changes the text that is displayed when your name is hovered over.'
+    permission: cpfx.custom
+    permission-message: "§cYou're missing the following permission: §6<permission>"
+  ignore:
+    description: 'I wonder what this could be used for.'
+  link:
+    aliases: [web, website, url]
+    description: 'For sending links.'
+    permission: chat.links
+    permission-message: "§cYou're missing the following permission: §6<permission>"
+  color:
+    aliases: [cc, chatcolor, chat]
+    permission: chat.color
+    description: 'For changing your chat color.'
+    permission-message: "§cYou're missing the following permission: §6<permission>"
+  me:
+    aliases: [action, oorp]
+    description: 'Do fancy stuff'

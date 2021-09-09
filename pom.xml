@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.timeist</groupId>
+    <artifactId>LumsDekos</artifactId>
+    <version>1.5.4</version>
+    <packaging>jar</packaging>
+    <name>LumsDekos</name>
+    <description>Giga fancy description that I am too lazy to look up. Y i k e s.</description>
+
+    <developers>
+
+        <developer>
+
+            <name>Gadse</name>
+
+        </developer>
+
+
+        <developer>
+
+            <name>Lum</name>
+
+        </developer>
+
+    </developers>
+
+
+    <properties>
+
+        <author>Lum</author>
+
+        <mainClass>com.timeist.TimeistsDecos</mainClass>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    </properties>
+
+
+    <build>
+
+        <sourceDirectory>src/main/java</sourceDirectory>
+
+        <defaultGoal>clean install</defaultGoal>
+
+
+        <resources>
+
+
+            <resource>
+
+                <directory>src/main/resources</directory>
+
+                <filtering>true</filtering>
+
+
+                <includes>
+
+                    <include>plugin.yml</include>
+
+                    <include>config.yml</include>
+
+                </includes>
+
+            </resource>
+
+
+            <resource>
+
+                <directory>src/main/resoruces</directory>
+
+                <filtering>false</filtering>
+
+
+                <excludes>
+
+                    <exclude>**/*.java</exclude>
+
+                    <exclude>plugin.yml</exclude>
+
+                    <exclude>config.yml</exclude>
+
+                </excludes>
+
+            </resource>
+
+        </resources>
+
+
+        <plugins>
+
+
+            <plugin>
+
+                <groupId>org.apache.maven.plugins</groupId>
+
+                <artifactId>maven-compiler-plugin</artifactId>
+
+                <version>3.1</version>
+
+
+                <configuration>
+
+                    <source>8</source>
+
+                    <target>8</target>
+
+                </configuration>
+
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+
+    <repositories>
+
+
+        <repository>
+
+            <id>destroystokyo-repo</id>
+
+            <url>https://repo.destroystokyo.com/repository/maven-public//</url>
+
+        </repository>
+
+
+        <repository>
+
+            <id>Scarsz-Nexus</id>
+
+            <url>https://nexus.scarsz.me/content/groups/public/</url>
+
+        </repository>
+
+
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+
+
+    </repositories>
+
+
+    <dependencies>
+
+
+        <dependency>
+
+            <groupId>com.destroystokyo.paper</groupId>
+
+            <artifactId>paper-api</artifactId>
+
+            <version>1.16.5-R0.1-SNAPSHOT</version>
+
+            <scope>provided</scope>
+
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <dependency>
+
+            <groupId>org.apache.httpcomponents</groupId>
+
+            <artifactId>httpclient</artifactId>
+
+            <version>4.5.10</version>
+
+        </dependency>
+
+    </dependencies>
+
+</project>
