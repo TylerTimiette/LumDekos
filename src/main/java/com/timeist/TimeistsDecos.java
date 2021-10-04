@@ -15,6 +15,7 @@ import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,6 +34,10 @@ public class TimeistsDecos extends JavaPlugin {
 
     public static TimeistsDecos getInstance() {
         return instance;
+    }
+
+    public static Plugin getPlugin()  {
+        return getPlugin(TimeistsDecos.class);
     }
 
     public Database getDatabase() {
