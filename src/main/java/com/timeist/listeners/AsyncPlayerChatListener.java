@@ -77,9 +77,7 @@ public class AsyncPlayerChatListener implements Listener {
             //1.5.4 changed this to be a URL taken from the config.
 
             //Without runTaskAsynchronously it needs to wait for Discord to respond before continuing
-            Bukkit.getScheduler().runTaskAsynchronously(TimeistsDecos.getPlugin(), new Runnable() {
-                @Override
-                public void run() {
+
                     DiscordWebhook hook = new DiscordWebhook();
                     //We're setting up the URL
                     hook.setUsername(player.getName());
@@ -93,8 +91,8 @@ public class AsyncPlayerChatListener implements Listener {
                         var10.printStackTrace();
                         System.out.println("You borked it!");
                     }
-                }
-            });
+
+
             //Compiling our message.
             TextComponent precursor = new TextComponent(this.color(Util.translateHexColorCodes("#", sb.toString())));
             TextComponent message = new TextComponent(this.color(Util.translateHexColorCodes("#", messagecheck)));

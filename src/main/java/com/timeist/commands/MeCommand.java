@@ -31,14 +31,14 @@ public class MeCommand implements CommandExecutor {
 
                 //Makes actions appear on Discord.
                 //Requested by Marrow
-                String discordActionMessage = "**(**ACTION**)** " + message;
+                String discordActionMessage = "**(**_ACTION_**)** " + message;
                 Bukkit.getScheduler().runTaskAsynchronously(TimeistsDecos.getPlugin(), new Runnable() {
                     @Override
                     public void run() {
                         DiscordWebhook hook = new DiscordWebhook();
                         //We're setting up the URL
                         hook.setUsername(player.getName());
-                        hook.setDisplayname(net.md_5.bungee.api.ChatColor.stripColor(player.getDisplayName()).replaceAll("&[k-oK-O]", ""));
+                        https://github.com/TylerTimiette/LumDekos.git                    hook.setDisplayname(net.md_5.bungee.api.ChatColor.stripColor(player.getDisplayName()).replaceAll("&[k-oK-O]", ""));
                         hook.setContent(net.md_5.bungee.api.ChatColor.stripColor(discordActionMessage.replaceAll("&[a-zA-Z0-9]","").replaceAll("@", "#")));
                         hook.setAvatarUrl("https://mc-heads.net/head/" + player.getUniqueId() + ".png");
 
