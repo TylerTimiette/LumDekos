@@ -78,6 +78,8 @@ public class AsyncPlayerChatListener implements Listener {
 
             //Without runTaskAsynchronously it needs to wait for Discord to respond before continuing
 
+
+            //^^I think at best Napsta is using way more resources than needed, and at worst seeing changes that aren't actually there
                     DiscordWebhook hook = new DiscordWebhook();
                     //We're setting up the URL
                     hook.setUsername(player.getName());

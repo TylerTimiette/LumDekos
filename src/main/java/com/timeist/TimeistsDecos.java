@@ -36,6 +36,10 @@ public class TimeistsDecos extends JavaPlugin {
         return instance;
     }
 
+    public static Plugin getPlugin()  {
+        return getPlugin(TimeistsDecos.class);
+    }
+
     public Database getDatabase() {
         return this.database;
     }
