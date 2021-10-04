@@ -14,6 +14,7 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.HoverEvent.Action;
 import net.milkbowl.vault.chat.Chat;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -74,19 +75,26 @@ public class AsyncPlayerChatListener implements Listener {
             this.plugin.getLogger().info("[CHAT] " + player.getName() + " > " + event.getMessage());
 
             //1.5.4 changed this to be a URL taken from the config.
-            DiscordWebhook hook = new DiscordWebhook();
-            //We're setting up the URL
-            hook.setUsername(player.getName());
-            hook.setDisplayname(ChatColor.stripColor(player.getDisplayName()).replaceAll("&[k-oK-O]", ""));
-            hook.setContent(ChatColor.stripColor(event.getMessage().replaceAll("@", "#")));
-            hook.setAvatarUrl("https://mc-heads.net/head/" + player.getUniqueId() + ".png");
 
-            try {
-                hook.execute();
-            } catch (Exception var10) {
-                var10.printStackTrace();
-                System.out.println("You borked it!");
-            }
+            //Without runTaskAsynchronously it needs to wait for Discord to respond before continuing
+            Bukkit.getScheduler().runTaskAsynchronously(TimeistsDecos.getPlugin(), new Runnable() {
+                @Override
+                public void run() {
+                    DiscordWebhook hook = new DiscordWebhook();
+                    //We're setting up the URL
+                    hook.setUsername(player.getName());
+                    hook.setDisplayname(ChatColor.stripColor(player.getDisplayName()).replaceAll("&[k-oK-O]", ""));
+                    hook.setContent(ChatColor.stripColor(event.getMessage().replaceAll("&[a-zA-Z0-9]","").replaceAll("@", "#")));
+                    hook.setAvatarUrl("https://mc-heads.net/head/" + player.getUniqueId() + ".png");
+
+                    try {
+                        hook.execute();
+                    } catch (Exception var10) {
+                        var10.printStackTrace();
+                        System.out.println("You borked it!");
+                    }
+                }
+            });
             //Compiling our message.
             TextComponent precursor = new TextComponent(this.color(Util.translateHexColorCodes("#", sb.toString())));
             TextComponent message = new TextComponent(this.color(Util.translateHexColorCodes("#", messagecheck)));

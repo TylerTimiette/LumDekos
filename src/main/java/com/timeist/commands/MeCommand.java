@@ -1,5 +1,7 @@
 package com.timeist.commands;
 
+import com.timeist.DiscordWebhook;
+import com.timeist.TimeistsDecos;
 import com.timeist.Util;
 import javax.annotation.Nonnull;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -26,6 +28,29 @@ public class MeCommand implements CommandExecutor {
                 return true;
             } else {
                 Player player = (Player)sender;
+
+                //Makes actions appear on Discord.
+                //Requested by Marrow
+                String discordActionMessage = "**(**ACTION**)** " + message;
+                Bukkit.getScheduler().runTaskAsynchronously(TimeistsDecos.getPlugin(), new Runnable() {
+                    @Override
+                    public void run() {
+                        DiscordWebhook hook = new DiscordWebhook();
+                        //We're setting up the URL
+                        hook.setUsername(player.getName());
+                        hook.setDisplayname(net.md_5.bungee.api.ChatColor.stripColor(player.getDisplayName()).replaceAll("&[k-oK-O]", ""));
+                        hook.setContent(net.md_5.bungee.api.ChatColor.stripColor(discordActionMessage.replaceAll("&[a-zA-Z0-9]","").replaceAll("@", "#")));
+                        hook.setAvatarUrl("https://mc-heads.net/head/" + player.getUniqueId() + ".png");
+
+                        try {
+                            hook.execute();
+                        } catch (Exception var10) {
+                            var10.printStackTrace();
+                            System.out.println("You borked it!");
+                        }
+
+                    }
+                });
                 message = ChatColor.translateAlternateColorCodes('&', "&d&l(&5ACTION&d&l) " + player.getDisplayName() + "&0: &d" + message);
                 Util.sendChatMessage(player.getUniqueId(), new BaseComponent[]{new TextComponent(this.color(Util.translateHexColorCodes("#", message)))});
                 return true;
