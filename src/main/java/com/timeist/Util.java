@@ -212,22 +212,6 @@ public class Util {
         int segments;
         int increment;
         StringBuilder output = new StringBuilder(input);
-        if (type.equalsIgnoreCase("bi"))
-            segments = 3;
-        if (type.equalsIgnoreCase("lesbian"))
-            segments = 5;
-
-        if (type.equalsIgnoreCase("nb"))
-            segments = 4;
-
-        if (type.equalsIgnoreCase("trans"))
-            segments = 5;
-
-        if (type.equalsIgnoreCase("ace"))
-            segments = 4;
-
-        if (type.equalsIgnoreCase("pan"))
-            segments = 3;
 
 
 
