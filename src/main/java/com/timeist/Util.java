@@ -41,7 +41,7 @@ public class Util {
 
     //Retrieves player data.
     public static PlayerData getPlayerData(UUID uuid) {
-        return (PlayerData)playerData.get(uuid);
+        return (PlayerData) playerData.get(uuid);
     }
 
 
@@ -96,7 +96,6 @@ public class Util {
     }
 
 
-
     //This is the function we use to send /links, /me, and regular chat messages. It runs asynchronously as otherwise it would halt the server to send the messages. Which, believe it or not, is inefficient.
     public static void sendChatMessage(UUID player, BaseComponent... baseComponents) {
         Bukkit.getScheduler().runTaskAsynchronously(TimeistsDecos.getInstance(), () -> {
@@ -134,7 +133,7 @@ public class Util {
         Matcher matcher = hexPattern.matcher(message);
         StringBuffer buffer = new StringBuffer(message.length() + 32);
 
-        while(matcher.find()) {
+        while (matcher.find()) {
             String group = matcher.group(1);
             matcher.appendReplacement(buffer, "§x§" + group.charAt(0) + '§' + group.charAt(1) + '§' + group.charAt(2) + '§' + group.charAt(3) + '§' + group.charAt(4) + '§' + group.charAt(5));
         }
@@ -155,6 +154,147 @@ public class Util {
         }
     }
 
+
+    //For /specialchat gay
+    public static String rainbowifyText(String input) {
+        StringBuilder output = new StringBuilder();
+        //There'll only be 12 added characters in this loop and they are seen below.
+        int currentChar = 1;
+        //4, c, 6, e, 2, a, b, 3, 1, 9, d, 5
+        for (int i = 0; i < input.length(); i++) {
+
+            switch (currentChar) {
+                case 11:
+                    currentChar = 1;
+                    break;
+                case 1:
+                    output.append("&4");
+                    break;
+                case 2:
+                    output.append("&c");
+                    break;
+                case 3:
+                    output.append("&6");
+                    break;
+                case 4:
+                    output.append("&e");
+                    break;
+                case 5:
+                    output.append("&a");
+                    break;
+                case 6:
+                    output.append("&2");
+                    break;
+                case 7:
+                    output.append("&b");
+                    break;
+                case 8:
+                    output.append("&3");
+                    break;
+                case 9:
+                    output.append("&5");
+                    break;
+                case 10:
+                    output.append("&d");
+                    break;
+            }
+
+            output.append(input.charAt(i));
+            if(!(input.charAt(i) == ' '))
+            currentChar++;
+        }
+
+        return output.toString();
+    }
+
+
+    public static String segmentColoredMessage(String input, String type) {
+        int segments;
+        int increment;
+        StringBuilder output = new StringBuilder(input);
+        if (type.equalsIgnoreCase("bi"))
+            segments = 3;
+        if (type.equalsIgnoreCase("lesbian"))
+            segments = 5;
+
+        if (type.equalsIgnoreCase("nb"))
+            segments = 4;
+
+        if (type.equalsIgnoreCase("trans"))
+            segments = 5;
+
+        if (type.equalsIgnoreCase("ace"))
+            segments = 4;
+
+        if (type.equalsIgnoreCase("pan"))
+            segments = 3;
+
+
+
+        switch(type) {
+            case "bi":
+                segments = 3;
+                //#D8097E, #8C579C, #24468E
+                //Every increment, the color changes. The +7 is to account for the hex codes that we just added
+                Math.round(increment = (input.length() / segments));
+                output.insert(0,"#D8097E");
+                output.insert(increment + 7, "#8C579C");
+                output.insert(increment * 2 + 7, "#24468E");
+                break;
+
+
+            case "lesbian":
+                segments = 5;
+                Math.round(increment = (input.length() / segments));
+
+                output.insert(0, "#D62900");
+                output.insert(increment + 7, "#FF9B55");
+                output.insert((increment * 2) + 7, "#FFFFFF");
+                output.insert((increment * 3) + 7, "#D461A6");
+                output.insert((increment * 4) + 7, "#A50062");
+                break;
+
+            case "nb":
+                segments = 4;
+                Math.round(increment = (input.length() / segments));
+
+                output.insert(0, "#FFF430");
+                output.insert(increment + 7, "#FFFFFF");
+                output.insert((increment * 2) + 7, "#9C59D1");
+                output.insert((increment * 3) + 7, "#000000");
+
+            case "trans":
+                segments = 5;
+                Math.round(increment = (input.length() / segments));
+                output.insert(0, "#55CDFC");
+                output.insert(increment + 7, "#F7A8B8");
+                output.insert((increment * 2) + 7, "#FFFFFF");
+                output.insert((increment * 3) + 7, "#F7A8B8");
+                output.insert((increment * 4) + 7, "#55CDFC");
+
+            case "ace":
+                segments = 4;
+                Math.round(increment = (input.length() / segments));
+
+                output.insert(0, "#000000");
+                output.insert(increment + 7, "#A3A3A3");
+                output.insert((increment * 2) + 7, "#FFFFFF");
+                output.insert((increment * 3) + 7, "#800080");
+
+            case "pan":
+                segments = 3;
+                Math.round(increment = (input.length() / segments));
+                output.insert(0,"#FF1B8D");
+                output.insert(increment + 7, "#FFDA00");
+                output.insert(increment * 2 + 7, "#1BB3FF");
+
+        }
+
+
+
+
+        return output.toString();
+    }
 
 
 }

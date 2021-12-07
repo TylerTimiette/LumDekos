@@ -45,7 +45,7 @@ public class TimeistsDecos extends JavaPlugin {
     }
     //This is always ran when the server starts loading plugins.
     public void onEnable() {
-        this.getLogger().info("Lum's Dekos project started on 1/27/18. It is developed & maintained by Timiette. As of October 2019, Gadse has made it new entirely from scratch. Thanks, Gadse. \n\n\n As of September 2nd, 2021, this plugin has officially been archived as version 1.5.4");
+        this.getLogger().info("Lum's Dekos project started on 1/27/18. It is developed & maintained by Timiette.");
 
         //If Vault is not found, this plugin is useless. It uses Vault for the Chat object.
         if (!this.setupVault()) {

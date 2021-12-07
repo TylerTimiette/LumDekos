@@ -73,7 +73,8 @@ public class AsyncPlayerChatListener implements Listener {
             //Messagecheck was just a placeholder name when I was bug-fixing, but I'm incredibly lazy and don't feel like renaming it now.
             String messagecheck = Util.removeFormatting(player, playerData.getColor() + event.getMessage());
             this.plugin.getLogger().info("[CHAT] " + player.getName() + " > " + event.getMessage());
-
+            if(playerData.getColor().equalsIgnoreCase("special:rainbow"))
+                messagecheck = Util.rainbowifyText(messagecheck);
             //1.5.4 changed this to be a URL taken from the config.
 
             //Without runTaskAsynchronously it needs to wait for Discord to respond before continuing
