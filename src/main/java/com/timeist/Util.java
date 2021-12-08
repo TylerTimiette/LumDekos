@@ -223,7 +223,7 @@ public class Util {
                 Math.round(increment = (input.length() / segments));
                 output.insert(0,"#D8097E");
                 output.insert(increment + 7, "#8C579C");
-                output.insert(increment * 2 + 7, "#24468E");
+                output.insert((increment * 2) + 14, "#24468E");
                 break;
 
 
@@ -233,9 +233,9 @@ public class Util {
 
                 output.insert(0, "#D62900");
                 output.insert(increment + 7, "#FF9B55");
-                output.insert((increment * 2) + 7, "#FFFFFF");
-                output.insert((increment * 3) + 7, "#D461A6");
-                output.insert((increment * 4) + 7, "#A50062");
+                output.insert((increment * 2) + 14, "#FFFFFF");
+                output.insert((increment * 3) + 21, "#D461A6");
+                output.insert((increment * 4) + 28, "#A50062");
                 break;
 
             case "nb":
@@ -244,17 +244,17 @@ public class Util {
 
                 output.insert(0, "#FFF430");
                 output.insert(increment + 7, "#FFFFFF");
-                output.insert((increment * 2) + 7, "#9C59D1");
-                output.insert((increment * 3) + 7, "#000000");
+                output.insert((increment * 2) + 14, "#9C59D1");
+                output.insert((increment * 3) + 21, "#000000");
 
             case "trans":
                 segments = 5;
                 Math.round(increment = (input.length() / segments));
                 output.insert(0, "#55CDFC");
                 output.insert(increment + 7, "#F7A8B8");
-                output.insert((increment * 2) + 7, "#FFFFFF");
-                output.insert((increment * 3) + 7, "#F7A8B8");
-                output.insert((increment * 4) + 7, "#55CDFC");
+                output.insert((increment * 2) + 14, "#FFFFFF");
+                output.insert((increment * 3) + 21, "#F7A8B8");
+                output.insert((increment * 4) + 28, "#55CDFC");
 
             case "ace":
                 segments = 4;
@@ -262,21 +262,17 @@ public class Util {
 
                 output.insert(0, "#000000");
                 output.insert(increment + 7, "#A3A3A3");
-                output.insert((increment * 2) + 7, "#FFFFFF");
-                output.insert((increment * 3) + 7, "#800080");
+                output.insert((increment * 2) + 14, "#FFFFFF");
+                output.insert((increment * 3) + 21, "#800080");
 
             case "pan":
                 segments = 3;
                 Math.round(increment = (input.length() / segments));
                 output.insert(0,"#FF1B8D");
                 output.insert(increment + 7, "#FFDA00");
-                output.insert(increment * 2 + 7, "#1BB3FF");
+                output.insert((increment * 2) + 14, "#1BB3FF");
 
         }
-
-
-
-
         return output.toString();
     }
 
